@@ -1,0 +1,7 @@
+---
+title: "solving_systems"
+output: html_document
+---
+
+Now with our refreshed understanding of matrices, let's revisit how to solve systems of linear equations!
+

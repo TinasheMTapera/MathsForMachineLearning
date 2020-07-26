@@ -1,0 +1,270 @@
+---
+title: "Matrices"
+output: html_document
+---
+
+Matrices are great ways to represent systems of linear equations or linear functions. Formally, a matrix looks like this:
+
+
+\begin{equation*}
+A = 
+\begin{bmatrix}
+a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\
+a_{2,1} & a_{2,2} & \cdots & a_{2,n} \\
+\vdots  & \vdots  & \ddots & \vdots  \\
+a_{m,1} & a_{m,2} & \cdots & a_{m,n} 
+\end{bmatrix}, a_{mn} \in \mathbb{R}
+\end{equation*}
+
+Recall that, so long as the elements of the matrix are real numbers ($a_{mn} \in \mathbb{R}$), then addition of two matrices is element-wise.
+
+```{r}
+a <- matrix(c(1,2,1,4,4,5,6,7,7), nrow = 3, ncol = 3)
+print(a)
+
+b <- matrix(c(-7,-7,6,2,1,-1,4,5,-4), nrow = 3, ncol = 3)
+print(b)
+
+print(a + b)
+```
+
+Matrices can of course be multiplied by a scalar:
+
+```{r}
+print(100 * a)
+```
+
+
+Multiplication can only happen if the matrices share the same dimension for the first matrix's columns, and the second matrix's rows. That is to say, $AB = C$ only if $A \in \mathbb{R}^{m \times n}, B \in \mathbb{R}^{n \times k}$ -- the number of columns of A ($n$) is the same as the number of rows of B ($n$). As I learnt it "the inner dimensions must be equal". Interestingly, to know the final shape of the resulant matrix of multiplication, you use "outer dimentions", meaning that $C$ will be a matrix with dimensions $(m,k)$. This is called a *dot product* multiplication and is more common than the special case of matrix multiplication called the *Hadamard product*. There's a specifically long process of calculating these by hand, that includes skimming row-wise and column-wise along each element and summing the values at the end — I won't do that here but it'll be pretty familiar for anybody who did it in high school [INSERT LINK TO DEMO].
+
+```{r}
+# a 3 x 2 matrix
+a <- matrix(c(1,2,1,4,4,5), nrow = 3, ncol = 2)
+print(a)
+
+# a 2 x 3 matrix
+b <- matrix(c(-7,-7,6,2,1,-1), nrow = 2, ncol = 3)
+print(b)
+
+# they can multiply because the inner dimensions are the same, 2 x 2
+# the result is a 3 x 3 matrix
+print(a %*% b)
+```
+
+
+When you have a square matrix (dimensions $(n, n)$), there's a special case of matrix called the *identity matrix* that has 1 values only along it's diagonal from left to right:
+
+\begin{equation*}
+I := 
+\begin{bmatrix}
+1 & 0 & \cdots & 0 \\
+0 & 1 & \cdots & 0 \\
+\vdots  & \vdots  & \ddots & \vdots  \\
+0 & 0 & \cdots & 1 
+\end{bmatrix}, \in \mathbb{R}^{n \times n}
+\end{equation*}
+
+In R:
+
+```{r}
+diag(3)
+```
+
+
+It comes in handy for a couple of different applications.
+
+Here are some general rules about matrices:
+
+1. They are **not commutative**.
+
+Unlike in general algebra, you can't reverse the order of multiplication: $A \cdot B \neq B \cdot A$. This is because of the inner dimensions/outer dimensions thing, as well as how the element sums are calculated.
+
+```{r}
+# a 3 x 2 matrix
+a <- matrix(c(1,2,1,4,4,5), nrow = 3, ncol = 2)
+print(a)
+
+# a 2 x 2 matrix
+b <- matrix(c(-7,-7,6,2), nrow = 2, ncol = 2)
+print(b)
+
+# the result is a 3 x 2 matrix
+print(a %*% b)
+
+# but flipping the order can't be done because now you're trying to multiply a 2x2 and 3x2
+try(b %*% a)
+```
+
+
+2. They are **associative**.
+
+This means that if you have multiple matrices being multiplied, you can do the multiplications in any order (so long as the overall order of the matrices is kept the same):
+
+$A(BC) = (AB)C$
+
+```{r}
+# a 3 x 2 matrix
+a <- matrix(c(1,2,1,4,4,5), nrow = 3, ncol = 2)
+
+# a 2 x 2 matrix
+b <- matrix(c(-7,-7,6,2), nrow = 2, ncol = 2)
+
+print((3 * a) %*% b)
+print(a %*% (3 * b))
+```
+
+
+3. They are **distributive**.
+
+This means a common factor can be distributed over all of the elements of an operation:
+
+$(A+B)C=AC+BC$ or $A(C+D)=AC+AD$
+
+```{r}
+# a 2 x 2 matrix
+a <- matrix(c(1,2,1,4), nrow = 2, ncol = 2)
+
+# a 2 x 2 matrix
+b <- matrix(c(-7,-7,6,2), nrow = 2, ncol = 2)
+
+print((a + b) * 100)
+print(100 * (a + b))
+print(100*a + 100*b)
+```
+
+
+4. Multiplication by the **Identity matrix** is important.
+
+If you have a matrix $A \in \mathbb{R}^{m \times n}$, then you can multiply it by the identity matrix *twice* to get it back: $I_mA=AI_n =A$; there are many reasons why the Identity matrix is important, the first being the solution to the inverse of a matrix.
+
+### Inverses and Transpositions
+
+Let's say we have a square matrix, $A$, and a similarly shaped square matrix $B$; if we multiply $A$ and $B$, and the result is the identity matrix $I$, then B is referred to as the *inverse* of $A$, with the notation $A^{-1}$. In this specific case, $AB = I_n = BA$, where $n$ denotes the dimensions of this square matrix:
+
+```{r}
+
+a <- matrix(c(1,2,1,4,4,5,6,7,7), nrow = 3, ncol = 3)
+print(a)
+
+b <- matrix(c(-7,-7,6,2,1,-1,4,5,-4), nrow = 3, ncol = 3)
+print(b)
+
+identity <- diag(3)
+print(identity)
+
+print(a %*% b)
+
+print(a %*% b == identity)
+```
+
+Importantly, not every matrix has an inverse, due to the nature of the mathematics used to calculate the inverse. I'm not going to write every step of this procedure, but just recall that in order to find the inverse of a matrix (for example, $A \in \mathbb{R}^{2 \times 2}$) by hand, you end up with this as the final step:
+
+\begin{equation*}
+A^{-1} = 
+
+\frac{1}{a_{1,1}a_{2,2} - a_{1,2}a_{2,1}}
+
+\begin{bmatrix}
+a_{1,1} & a_{1,2} \\
+a_{2,1} & a_{2,2} 
+\end{bmatrix}
+\end{equation*}
+
+The problem here is that if the denominator $a_{1,1}a_{2,2} - a_{1,2}a_{2,1}$ (formally known as the *determinant*) is zero, there is no solution. Such a matrix is called *singular*.
+
+```{r}
+a <- matrix(c(1,2,1,4,4,5,6,7,7), nrow = 3, ncol = 3)
+det(a) %>% # function to find the determinant of a matrix
+  print()
+
+b <- matrix(c(-7,-7,6,2), nrow = 2, ncol = 2)
+det(b) %>%
+  print()
+```
+
+To find the transpose of a matrix, use `t()` in R; otherwise, by hand, the transposition of a matrix is, in a sense, a mirror image of the matrix, where each column becomes a row and each row becomes a column:
+
+```{r}
+a <- matrix(c(1,2,1,4,4,5), nrow = 3, ncol = 2)
+print(a)
+t(a) %>%
+  print()
+```
+
+This is denoted formally with this symbol: $A^{\intercal}$.
+If you had a matrix where the transpose happens to be the exact same as the input, the matrix is said to be *symmetric*.
+
+```{r}
+# Here's a trick to create a symmetrical matrix, using the upper.tri() masking function
+a <- matrix(1:25, 5)
+print(a)
+
+# find the "upper triangle" of a matrix object:
+upper.tri(a) %>%
+  print()
+
+# we transpose the matrix and take the upper.tri() of the original, and paste it into the transposed spots
+
+t(a)[upper.tri(a)] %>% print()
+
+# putting it all together:
+
+a[upper.tri(a)] <- t(a)[upper.tri(a)]
+
+print(a)
+
+# now, test if the inverse is the same
+print(a == t(a))
+```
+
+In sum, here are some laws for matrix inversion and transposition:
+
+1. $AA^{-1} = I = A^{-1}A$
+
+```{r}
+a <- as.matrix(cbind(c(3,0),c(1,2)))
+print(a)
+print(a %*% solve(a))
+```
+
+2. $(AB)^{-1} = B^{-1}A^{-1}$
+
+```{r}
+b <- as.matrix(cbind(c(4,1),c(0,2)))
+print(b)
+
+print(a %*% b)
+
+print(solve(a %*% b) == (solve(b) %*% solve(a)))
+```
+
+3. $(A+B)^{-1} \neq B^{-1}A^{-1}$
+
+```{r}
+print(a + b)
+
+print(a + b == (solve(b) %*% solve(a)))
+```
+
+4. $(A^\intercal)^\intercal = A$
+
+```{r}
+print(a)
+print(t(t(a)))
+```
+
+5. $(A+B)^\intercal = A^{\intercal}+B^{\intercal}$
+
+```{r}
+print(t(a + b))
+
+print(t(a) + t(b))
+```
+
+6. $(AB)^{\intercal} = B^{\intercal}A^{\intercal}$
+
+```{r}
+print(t(a %*% b))
+
+print(t(b) %*% t(a))
+```

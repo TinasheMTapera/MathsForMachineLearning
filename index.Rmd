@@ -1,0 +1,43 @@
+--- 
+title: "Mathematics for Machine Learning in R"
+author: "Tinashe M. Tapera"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+biblio-style: apalike
+link-citations: yes
+description: "Crash Course-ing Math for Machine Learning"
+---
+
+# Pre-amble
+
+My name is Tinashe. I'm applying to PhD Programs soon. I'm not quite sure when, but soon. I'm interested in applying machine learning methods to understand human-based or human-generated data — like the relationship between behaviour and the brain. And for my PhD fields of interest (biostatistics, computational neuroscience, machine learning, quantitative psychology — in no particular order), I've been made aware that a solid foundation in linear algebra and calculus is an agreed upon prerequisite for success in applying, and success in the field at large.
+
+*Fair enough*, I used to say. *I know most of calc and algebra. I was part of the [International Baccalaureate Diploma Programme]() in high school, and we did a lot of maths* (and yes, I pronounce it *maths*).
+
+As it turns out, not only is "I did it before" not sufficient documentation of one's mathematical acumen, but it's recommended to have it on one's transcript from the degree level. And by "recommended", they really mean "necessary". Which is a fair prerequisite — I get it. However, being an international student in the US with a lot of logistical barriers to think about, I've found myself in the unique position of wanting to apply to PhD programs in quantitative fields, and having nothing to prove my grasp of the mathematics of calculus and linear algebra.
+
+This could be an insurmountable challenge, **but not to worry!** One advantage of being born in this day-and-age is that *everything is available on the internet somewhere* — and that includes learning resources for college calculus and linear algebra! With the immense amount of learning material available online, I'm certainly able to independantly re-learn and self-teach many of the concepts from traditional college courses, and document my learning and progress online as well!
+
+With that being said, allow me to outline the purpose of this project:
+
+1. To learn/re-learn the foundational concepts of calculus and linear algebra necessary for machine learning applications at graduate level study
+
+Overall, the [IBDP]() is an excellent high-school track that preps its participants for greater success in college courses. Having done IB, I got through college pre-med physics without a hitch. However, there's no guarantee that the knowledge from the IBDP retains through the 4 (in my case 5) years of college post. Additionally, the material covered in IB maths is not absolutely inclusive of the material in a college level linear algebra or calculus sequence. It's close, but doesn't quite cover it all. And so, it would definitely be to my benefit to learn and document my appreciation of these topics.
+
+2. To document my learning of these topics
+
+Perhaps the most important reason for this project is to be able to have living, accessible documentation of the learning process. The R community has been growing steadily in its applicability of the language to all sorts of different interesting problems — one of them being the publication of reproducible narrative coding with [Rmarkdown](). With this package, R programmers can write reproducible code notebooks that can be rendered into reports with a myriad of fun features. In this project, I aim to use Rmarkdown to document my learning, including notes, homework exercises, and exams, with personalised examples of the thought process involved in solving problems, just as I used to do in secondary school (where we had one "book" for a subject; you take notes in the front, write homework/exams/assignments in the back, and hand it in every Friday so the teacher can check both, and mark your work).
+
+3. To practice publication with R and Rmarkdown
+
+It doesn't hurt to have a another repository with a cool R project — if I'm going to be re-learning calculus and linear algebra, things I already don't really like, I figure *why not make it interesting by trying to do it in R*? Although it [started purely as a statistical language](), the R community is growing and reaching its fingers into all kinds of niche uses, like [machine learning](), [deep learning](), [analytical dashboards](), [geolocation](), [scientific publication](), [Natural Language Processing](), [economics](), [database programming](), [slide presentations](), [3D data vis](), [production software development]() — heck, if you want, you can use R to [send you](), or even [create, memes]() on the fly. It's a fun time to be an R programmer, and contributing to the growing community in my own way is something I'm very motivated to do.
+
+4. For others to see it may be possible for them too
+
+In recompense to how the R community has benefitted my journey, I can only hope that this documentation may serve to inspire other R learners, stats learners, or anybody who'd like to tackle calculus and linear algebra, to believe that self-learning is an effective way to understand and appreciate the material. [The world is changing](), and perhaps it's time we paid more attention to prospective academics with broader and more diverse academic journeys.
+
+---
+
+So with that, I introduce you to *Mathematics for Machine Learning in R*. This repository follows *Mathematics for Machine Learning* by Deisenroth, Faisal, and Ong, available for free [here](). The basic premise will follow that mentioned before:
+
+For each chapter in the book, I will "take notes" by summarising and commenting on the concept being taught. At the end of each chapter, I'll answer the available questions in the book, and give code examples where appropriate.

@@ -1,0 +1,130 @@
+---
+title: "Systems of Linear Equations"
+output: html_document
+---
+
+Solving systems of linear equations is one of those mathematical skills that seems to apply to a very narrow  and specific set of problems. You do it for a year or two when you're 14, and after that you kinda just, move on. But in truth, the only reason we do this is because the real-world application is vastly too large for any human being to spend any amount of time solving -- we leave it up to the computers. But it's important that we understand what's going on, because that's why we're here! So let's review:
+
+Recall that a linear equation is one that takes the form $y = mx + c$ (or however you learned to specify it in school), that can be used to describe a line on a graph. If you have enough information, you can solve for unknown variables -- yay algebra. A system of linear equations is the case wherein you have multiple expressions with the same unknown variables, and you use them all to solve for them. This is often called the geometric interpretation of systems of linear equations, and on a graph with two planes/variables, the solution for the system is the intersection of the two lines. For example:
+
+$$\begin{align*}
+    x_1  + x_2 + x_3  = 3 &&\text{(1)}\\
+    x_1  - x_2 + 2x_3 = 2 &&\text{(2)}\\
+    x_2 +  x_3 = 2 &&\text{(3)}
+\end{align*}$$
+
+Remember how to do these? To solve for all three variables, we have to combine the equations together and eliminate variables, so that we can isolate only one variable to solve. If you combine (1) and (3), it's clear that $x_1$ has to be 1. If you combine (1) and (2), the $x_2$ variable cancels out, and you're left with $2x_1 + 3x_3 = 5$, and if $x_1$ is 1, then $2 + 3x_3 = 5$, and $x_3$ is therefore also 1. Lastly, we plug the values for $x_1$ and $x_3$ into any equation, and get that $x_2$ is also 1. So the *unique solution* for this system of linear equations, is (1,1,1). In a 3 dimensional graph, you'd see this:
+
+```{r}
+
+```
+
+
+In another example:
+
+$$\begin{align*}
+    x_1  + x_2 + x_3  =3 &&\text{(1)}\\
+    x_1  - x_2 + 2x_3 =2 &&\text{(2)}\\
+    2x_1 +  3x_3 = 1 &&\text{(3)}
+\end{align*}$$
+
+If you try and apply the typical approach to this system of linear equations, you'll find that there is *no solution* -- the planes on a graph wouldn't intersect. Linear regression solves this version of systems of linear equations especially well. 
+
+When we generalise these systems, we can use the following notations:
+
+\begin{equation*}
+
+x_1
+
+\begin{bmatrix}
+a_{1,1} \\
+\vdots  \\
+a_{m,1} 
+\end{bmatrix}
+
++
+
+x_2
+
+\begin{bmatrix}
+a_{1,2} \\
+\vdots  \\
+a_{m,2} 
+\end{bmatrix}
+
++
+
+\cdots
+
++
+
+x_n
+
+\begin{bmatrix}
+a_{1,n} \\
+\vdots  \\
+a_{m,n} 
+\end{bmatrix}
+
+=
+
+\begin{bmatrix}
+b_{1} \\
+\vdots  \\
+b_{m} 
+\end{bmatrix}
+
+\end{equation*}
+
+Or,
+
+\begin{equation*}
+
+\begin{bmatrix}
+a_{1,1} & \cdots & a_{1,n}\\
+\vdots  & & \vdots \\
+a_{1,m} & \cdots & a_{m,n}
+\end{bmatrix}
+
+\begin{bmatrix}
+x_{1} \\
+\vdots  \\
+x_{n} 
+\end{bmatrix}
+
+=
+
+\begin{bmatrix}
+b_{1} \\
+\vdots  \\
+b_{m} 
+\end{bmatrix}
+
+\end{equation*}
+
+And yes, those are matrices.
+
+### Solving Systems of Linear Equations in R
+
+It turns out solving equations is actually a pretty simple task in R, just not a common one. If we convert the first equation example to the matrix form above, it looks like this:
+
+```{r}
+# the coefficients
+a <- matrix(c(1, 1, 1, 1, -1, 2, 0, 1, 1), byrow = T, nrow = 3)
+print(a)
+
+# the answers
+b <- matrix(c(3, 2, 2), byrow = T, nrow = 3)
+print(b)
+```
+
+Now, with these two matrix objects, we can use the `solve()` function:
+
+```{r}
+# the unkowns
+unknowns <- solve(a, b)
+
+print(unknowns)
+```
+
+Pretty simple! We're going to revisit more difficult scenarios to solve, but first we'll need to refresh our memories on matrices:

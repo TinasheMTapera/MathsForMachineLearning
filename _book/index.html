@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Mathematics for Machine Learning in R</title>
+  <meta name="description" content="Crash Course-ing Math for Machine Learning" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Mathematics for Machine Learning in R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Crash Course-ing Math for Machine Learning" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Mathematics for Machine Learning in R" />
+  
+  <meta name="twitter:description" content="Crash Course-ing Math for Machine Learning" />
+  
+
+<meta name="author" content="Tinashe M. Tapera" />
+
+
+<meta name="date" content="2020-07-18" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="linear-algebra.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Math for Machine Learning in R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Pre-amble</a></li>
+<li class="chapter" data-level="2" data-path="linear-algebra.html"><a href="linear-algebra.html"><i class="fa fa-check"></i><b>2</b> Linear Algebra</a><ul>
+<li class="chapter" data-level="2.1" data-path="linear-algebra.html"><a href="linear-algebra.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="linear-algebra.html"><a href="linear-algebra.html#systems-of-linear-equations"><i class="fa fa-check"></i><b>2.2</b> Systems of Linear Equations</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="linear-algebra.html"><a href="linear-algebra.html#solving-systems-of-linear-equations-in-r"><i class="fa fa-check"></i><b>2.2.1</b> Solving Systems of Linear Equations in R</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="linear-algebra.html"><a href="linear-algebra.html#matrices"><i class="fa fa-check"></i><b>2.3</b> Matrices</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="linear-algebra.html"><a href="linear-algebra.html#inverses-and-transpositions"><i class="fa fa-check"></i><b>2.3.1</b> Inverses and Transpositions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="linear-algebra.html"><a href="linear-algebra.html#solving-systems-of-linear-equations"><i class="fa fa-check"></i><b>2.4</b> Solving Systems of Linear Equations</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Mathematics for Machine Learning in R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Mathematics for Machine Learning in R</h1>
+<p class="author"><em>Tinashe M. Tapera</em></p>
+<p class="date"><em>2020-07-18</em></p>
+</div>
+<div id="pre-amble" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Pre-amble</h1>
+<p>My name is Tinashe. I’m applying to PhD Programs soon. I’m not quite sure when, but soon. I’m interested in applying machine learning methods to understand human-based or human-generated data — like the relationship between behaviour and the brain. And for my PhD fields of interest (biostatistics, computational neuroscience, machine learning, quantitative psychology — in no particular order), I’ve been made aware that a solid foundation in linear algebra and calculus is an agreed upon prerequisite for success in applying, and success in the field at large.</p>
+<p><em>Fair enough</em>, I used to say. <em>I know most of calc and algebra. I was part of the <a href="">International Baccalaureate Diploma Programme</a> in high school, and we did a lot of maths</em> (and yes, I pronounce it <em>maths</em>).</p>
+<p>As it turns out, not only is “I did it before” not sufficient documentation of one’s mathematical acumen, but it’s recommended to have it on one’s transcript from the degree level. And by “recommended”, they really mean “necessary”. Which is a fair prerequisite — I get it. However, being an international student in the US with a lot of logistical barriers to think about, I’ve found myself in the unique position of wanting to apply to PhD programs in quantitative fields, and having nothing to prove my grasp of the mathematics of calculus and linear algebra.</p>
+<p>This could be an insurmountable challenge, <strong>but not to worry!</strong> One advantage of being born in this day-and-age is that <em>everything is available on the internet somewhere</em> — and that includes learning resources for college calculus and linear algebra! With the immense amount of learning material available online, I’m certainly able to independantly re-learn and self-teach many of the concepts from traditional college courses, and document my learning and progress online as well!</p>
+<p>With that being said, allow me to outline the purpose of this project:</p>
+<ol style="list-style-type: decimal">
+<li>To learn/re-learn the foundational concepts of calculus and linear algebra necessary for machine learning applications at graduate level study</li>
+</ol>
+<p>Overall, the <a href="">IBDP</a> is an excellent high-school track that preps its participants for greater success in college courses. Having done IB, I got through college pre-med physics without a hitch. However, there’s no guarantee that the knowledge from the IBDP retains through the 4 (in my case 5) years of college post. Additionally, the material covered in IB maths is not absolutely inclusive of the material in a college level linear algebra or calculus sequence. It’s close, but doesn’t quite cover it all. And so, it would definitely be to my benefit to learn and document my appreciation of these topics.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>To document my learning of these topics</li>
+</ol>
+<p>Perhaps the most important reason for this project is to be able to have living, accessible documentation of the learning process. The R community has been growing steadily in its applicability of the language to all sorts of different interesting problems — one of them being the publication of reproducible narrative coding with <a href="">Rmarkdown</a>. With this package, R programmers can write reproducible code notebooks that can be rendered into reports with a myriad of fun features. In this project, I aim to use Rmarkdown to document my learning, including notes, homework exercises, and exams, with personalised examples of the thought process involved in solving problems, just as I used to do in secondary school (where we had one “book” for a subject; you take notes in the front, write homework/exams/assignments in the back, and hand it in every Friday so the teacher can check both, and mark your work).</p>
+<ol start="3" style="list-style-type: decimal">
+<li>To practice publication with R and Rmarkdown</li>
+</ol>
+<p>It doesn’t hurt to have a another repository with a cool R project — if I’m going to be re-learning calculus and linear algebra, things I already don’t really like, I figure <em>why not make it interesting by trying to do it in R</em>? Although it <a href="">started purely as a statistical language</a>, the R community is growing and reaching its fingers into all kinds of niche uses, like <a href="">machine learning</a>, <a href="">deep learning</a>, <a href="">analytical dashboards</a>, <a href="">geolocation</a>, <a href="">scientific publication</a>, <a href="">Natural Language Processing</a>, <a href="">economics</a>, <a href="">database programming</a>, <a href="">slide presentations</a>, <a href="">3D data vis</a>, <a href="">production software development</a> — heck, if you want, you can use R to <a href="">send you</a>, or even <a href="">create, memes</a> on the fly. It’s a fun time to be an R programmer, and contributing to the growing community in my own way is something I’m very motivated to do.</p>
+<ol start="4" style="list-style-type: decimal">
+<li>For others to see it may be possible for them too</li>
+</ol>
+<p>In recompense to how the R community has benefitted my journey, I can only hope that this documentation may serve to inspire other R learners, stats learners, or anybody who’d like to tackle calculus and linear algebra, to believe that self-learning is an effective way to understand and appreciate the material. <a href="">The world is changing</a>, and perhaps it’s time we paid more attention to prospective academics with broader and more diverse academic journeys.</p>
+<hr />
+<p>So with that, I introduce you to <em>Mathematics for Machine Learning in R</em>. This repository follows <em>Mathematics for Machine Learning</em> by Deisenroth, Faisal, and Ong, available for free <a href="">here</a>. The basic premise will follow that mentioned before:</p>
+<p>For each chapter in the book, I will “take notes” by summarising and commenting on the concept being taught. At the end of each chapter, I’ll answer the available questions in the book, and give code examples where appropriate.</p>
+
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="linear-algebra.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["CalculusWithR.pdf", "CalculusWithR.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

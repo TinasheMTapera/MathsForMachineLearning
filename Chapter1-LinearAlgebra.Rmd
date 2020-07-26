@@ -1,0 +1,56 @@
+---
+title: "Linear Algebra"
+output: html_notebook
+---
+
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+
+# Linear Algebra
+
+## Introduction
+
+Let's first talk about the foundation of most of the maths that happens in machine learning: vectors.
+
+For most of us, vectors show up first in gemoetry and physics in school — in practice, they're used to surmise how objects move on a plane (think, the problem of calculating what time a ship will arrive somewhere if it travels in a striaght line against wind resistance). These are known as *geometric vectors*, but there are also other kinds of vectors. In general, a vector is defined as objects that 1) can be added together, and 2) can be multiplied by a scalar number ^[Formally, the phrase is "any real number", or "lambda is a member of the set of real numbers", denoted $\lambda \in \mathbb{R}$]. That's pretty much it! Given that definition, the following are all vectors:
+
+- Geometric vectors, like the line on a cartesian plane with a direction and magnitude
+
+- Polynomial numbers (they can be added and multiplied)
+
+- Audio signals -- they can be added and multiplied too!
+
+- Tuples in programming!
+
+```{r}
+my_vector <- c(1, 5, 7)
+
+print(my_vector * 100)
+
+my_vector2 <- c(8, 3, -1)
+
+print(my_vector + my_vector2)
+```
+
+Just remember, to add two vectors, they must be the same length, and each element of the vector is added component-wise; likewise, multiplying a vector by a scalar means that each element is multiplied component-wise. And importantly, when it comes to machine learning, it's important that all the possible elements that can result from the addition and multiplication of vectors and scalars, are themselves part of a countably finite set of numbers — that is to say, there should be an array of numbers that describe every possible outcome (even if you can't think of it at the moment). This is called a "vector space" ^[Formally, this is a mathematical property called [closure](https://en.wikipedia.org/wiki/Closure_(mathematics))].
+
+Now that we've discussed vectors, we'll discuss linear equations.
+
+
+## Systems of Linear Equations
+
+```{r child = 'chapter2/systems.Rmd'}
+```
+
+## Matrices
+
+```{r child = 'chapter2/matrices.Rmd'}
+```
+
+
+## Solving Systems of Linear Equations
+
+```{r child = 'chapter2/solving_systems.Rmd'}
+```
